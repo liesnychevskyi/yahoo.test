@@ -1,5 +1,6 @@
 package core.tests;
 
+import core.data.YahooTestData;
 import core.logger.MyLogger;
 import core.managers.DriverManager;
 import core.pages.YahooPage;
@@ -10,9 +11,6 @@ import org.testng.annotations.Test;
 
 public class YahooTest
 {
-    protected String boeingPageTitle = "The Boeing Company (BA)";
-    protected String originTitle = "Yahoo Finance - Business Finance, Stock Market, Quotes, News";
-    protected String searchText = "ba";
     protected WebDriver driver = null;
     protected DriverManager driverManager;
 
@@ -28,20 +26,22 @@ public class YahooTest
     }
 
     @Test(description="This TC will perform Yahoo execution")
-    public void test_1() throws InterruptedException
+    public void boeingYahooTest() throws InterruptedException
     {
         MyLogger.log.info("Create instance from Yahoo page...");
         YahooPage yahooPage = new YahooPage(driver);
         MyLogger.log.info("Clicking on the link FINANCE...");
         yahooPage.clickFinanceLink();
         MyLogger.log.info("Checking we are on the wright page...");
-        yahooPage.weOnTheYahooFinancePage(originTitle);
+        yahooPage.weOnTheYahooFinancePage(YahooTestData.originTitle);
         MyLogger.log.info("Typing some text...");
-        yahooPage.typeInTheSearchBox(searchText);
+        yahooPage.typeInTheSearchBox(YahooTestData.searchText);
         MyLogger.log.info("Clicking on Boeing Company button...");
         yahooPage.clickOnBoeingCompany();
         MyLogger.log.info("Getting text from the Boeing page...");
-        yahooPage.weOnTheBoeingCompanyPage(boeingPageTitle);
+        yahooPage.weOnTheBoeingCompanyPage(YahooTestData.boeingPageTitle);
+        MyLogger.log.info("Clicking on the Historical Date...");
+        yahooPage.clickOnHistoricalData();
     }
 
     @AfterTest
@@ -60,4 +60,3 @@ public class YahooTest
 //        Open | High | Low | Close | Volume
 //        364.88 | 365.23 | 353.32 | 356.46 | 356.46 | 6,409,600
 //----------------------------------------------------------------||
-

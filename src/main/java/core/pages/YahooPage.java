@@ -19,6 +19,7 @@ public class YahooPage extends Base
     By boeing_company_from_drop_down_list = By.xpath("//div[@title='The Boeing Company']");
     By yahoo_finance_title = By.xpath("//a[@href='https://finance.yahoo.com/' and @data-reactid='34']");
     By theBoeingCompanyBA = By.xpath("//h1[contains(text(),'The Boeing Company (BA)')]");
+    By historicalDate = By.xpath("//a[@href='/quote/BA/history?p=BA']");
 
 //--------------------------------------------------------------//Constructor
     public YahooPage(WebDriver driver)
@@ -66,5 +67,12 @@ public class YahooPage extends Base
         wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(boeing_company_from_drop_down_list));
         driver.findElement(boeing_company_from_drop_down_list).click();
+    }
+
+    public void clickOnHistoricalData() throws InterruptedException
+    {
+        wait = new WebDriverWait(driver, 20);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(historicalDate));
+        driver.findElement(historicalDate).click();
     }
 }

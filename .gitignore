@@ -1,5 +1,6 @@
 *.iml
 *.idea/
+.target/
 *.gitign
 # Created by https://www.gitignore.io/api/java,eclipse,intellij
 # Edit at https://www.gitignore.io/?templates=java,eclipse,intellij
