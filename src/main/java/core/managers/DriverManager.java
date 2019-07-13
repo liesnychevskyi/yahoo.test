@@ -32,42 +32,78 @@ public class DriverManager
         return driver;
     }
 //-------------------------------------------------------------------------||firefox
-    public WebDriver firefoxDriver(String address)
+public WebDriver firefoxDriver()
+{
+    try
     {
-        WebDriverManager.chromedriver().setup();
+        MyLogger.log.info("WebDriver manager started...");
+        WebDriverManager.firefoxdriver().setup();
+        MyLogger.log.info("Creating Firefox Driver...");
         driver = new FirefoxDriver();
-        driver.get(address);
-        return driver;
     }
+    catch (Exception e)
+    {
+        System.out.println(e.getMessage());
+    }
+    return driver;
+}
 //--------------------------------------------------------------------------||edge
-    public WebDriver edgeDriver()
-    {
-        WebDriverManager.chromedriver().setup();
+public WebDriver edgeDriver()
+{
+    try {
+        MyLogger.log.info("WebDriver manager started...");
+        WebDriverManager.edgedriver().setup();
+        MyLogger.log.info("Creating EdgeDriver...");
         driver = new EdgeDriver();
-        return driver;
-    }
-//--------------------------------------------------------------------------||IE
-    public WebDriver internetExplorerDriver()
+    } catch (Exception e)
     {
-        WebDriverManager.chromedriver().setup();
-        driver = new InternetExplorerDriver();
+        System.out.println(e.getMessage());
+    }
+    return driver;
+}
+//--------------------------------------------------------------------------||IE
+    public WebDriver internetExplorerDriver ()
+    {
+        try {
+            MyLogger.log.info("WebDriver manager started...");
+            WebDriverManager.iedriver().setup();
+            MyLogger.log.info("Creating InternetExplorer Driver...");
+            driver = new InternetExplorerDriver();
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         return driver;
     }
 //---------------------------------------------------------------------------||opera
-    public WebDriver operaDriver()
-    {
-        WebDriverManager.operadriver().setup();
-        driver = new OperaDriver();
-        return driver;
-    }
-//-------------------------------------------------------------------------||tearDown
-    public void shutDown()
-    {
-        if(driver != null)
+        public WebDriver operaDriver()
         {
-            MyLogger.log.info("Driver quiting...");
-            driver.quit();
+            try
+            {
+                MyLogger.log.info("WebDriver manager started...");
+                WebDriverManager.operadriver().setup();
+                MyLogger.log.info("Creating OperaDriver...");
+                driver = new OperaDriver();
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            return driver;
         }
-    }
+//-------------------------------------------------------------------------||tearDown
+            public void shutDown()
+            {
+                if (driver != null)
+                {
+                    MyLogger.log.info("Driver quiting...");
+                    driver.quit();
+                }
+                else
+                {
+                    System.out.println("Driver is null, nothing to quit");
+                }
+            }
 //--------------------------------------------------------------------------||
-}
+        }
+

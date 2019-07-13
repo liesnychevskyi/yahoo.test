@@ -11,20 +11,24 @@ import org.testng.annotations.Test;
 
 public class YahooTest
 {
+//=====================================================================//
     protected WebDriver driver = null;
     protected DriverManager driverManager;
-
+//=====================================================================//
     @BeforeTest
     public void setUp()
     {
         driverManager = new DriverManager();
-        driver = driverManager.chromeDriver();
+//        driver = driverManager.edgeDriver();
+//        driver = driverManager.chromeDriver();
+        driver = driverManager.firefoxDriver();
+//        driver = driverManager.internetExplorerDriver();
         MyLogger.log.info("Browser is extending...");
         driver.manage().window().maximize();
         MyLogger.log.info("WebDriver goes to the address...");
         driver.get("https://yahoo.com");
     }
-
+//====================================================================//
     @Test(description="This TC will perform Yahoo execution")
     public void boeingYahooTest() throws InterruptedException
     {
@@ -43,7 +47,7 @@ public class YahooTest
         MyLogger.log.info("Clicking on the Historical Date...");
         yahooPage.clickOnHistoricalData();
     }
-
+//=====================================================================//
     @AfterTest
     public void tearDown()
     {

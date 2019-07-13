@@ -73,6 +73,15 @@ public class YahooPage extends Base
     {
         wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(historicalDate));
-        driver.findElement(historicalDate).click();
+        boolean res = driver.findElement(historicalDate).isDisplayed();
+        if(res == true)
+        {
+            driver.findElement(historicalDate).click();
+        }
+        else
+        {
+            System.out.println("********Error element is not present*********");
+        }
+
     }
 }
